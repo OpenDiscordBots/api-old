@@ -1,0 +1,14 @@
+name = "odb-api"
+type = "javascript"
+zone_id = "be9698922e245d073c52db800c0dd316"
+account_id = "c8526a45c47706d6c69f8d997004bd7a"
+route = "api.opendiscordbots.com/*"
+compatibility_date = "2021-12-19"
+kv_namespaces = [
+    { binding = "ODB", id = "a4953dc133a441fbaab5aed9b6ad0841" },
+]
+
+[build]
+command = "npm install && npm run build"
+[build.upload]
+format = "service-worker"
