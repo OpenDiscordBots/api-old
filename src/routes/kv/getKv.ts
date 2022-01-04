@@ -1,5 +1,4 @@
 import { RouteData } from "../../router";
-import { createJSONResponse } from "../../utils/responses";
 
 export async function getKv(request: Request, data: RouteData): Promise<Response> {
   const { key } = data;
@@ -14,5 +13,10 @@ export async function getKv(request: Request, data: RouteData): Promise<Response
     return new Response(null, { status: 404 });
   }
 
-  return createJSONResponse(JSON.parse(value));
+  return new Response(value, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    status: 200,
+  });
 }

@@ -7,7 +7,7 @@ export async function setKv(request: Request, data: RouteData): Promise<Response
     return new Response(null, { status: 400 });
   }
 
-  await ODB.put(key as string, await request.text());
+  await ODB.put(key as string, await request.json());
 
   return new Response(null, { status: 204 });
 }
