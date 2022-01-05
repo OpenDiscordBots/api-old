@@ -1,5 +1,4 @@
 import { RouteData } from "../../router";
-import { createJSONResponse } from "../../utils/responses";
 
 export async function getGuildConfig(request: Request, data: RouteData): Promise<Response> {
   const { id, module } = data;
@@ -14,5 +13,10 @@ export async function getGuildConfig(request: Request, data: RouteData): Promise
     return new Response(null, { status: 404 });
   }
 
-  return createJSONResponse(JSON.parse(value));
+  return new Response(JSON.parse(value), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    status: 200,
+  });
 }
